@@ -13,7 +13,7 @@ def connect():
 
 
 
-con =connect()
+con = connect()
 
 
 cur = con.cursor()
@@ -35,7 +35,7 @@ cur = con.cursor()
             VALUES ('ショウ', 'M', 21, '****')""")'''
 
 cur.execute("""
-            UPDATE list SET password='****'
+            UPDATE list SET weight=55.7 WHERE username='ショウ'
             """)
 
 con.commit()
