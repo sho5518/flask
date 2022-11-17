@@ -1,5 +1,6 @@
-from flask import request, render_template, Flask
+from flask import request, render_template, Flask, jsonify
 import MySQLdb
+import html
 
 app = Flask(__name__)
 
@@ -19,13 +20,13 @@ def connect():
 password = "hoge"
 
 @app.route("/")
-def hello_world():
-    return "<p>Hello,World!</p>"
+def home():
+    return render_template("search.html")
 
 @app.route("/make", methods={"GET", "POST"})
 def make():
     if request.method == "GET":
-        render_template("make.html")
+        return render_template("make.html")
     elif request.method == "POST":
         username = request.form["usermane"]
         sex = request.form["sex"]
@@ -80,6 +81,27 @@ def login():
         else:
             con.close()
             return render_template("login.html", "パスワードが間違っています")
+
+@app.route("/result")
+def result():
+    form = request.args.get("format")
+    name = request.args.get("name")
+    con = connect()
+    cur = con.cursor()
+    cur.execute("""
+                SELECT thread_id,title,intro
+                FROM thread
+                WHERE title like %(title)s OR intro like %(intro)s
+                """, {"title" : "%"+name+"%", "intro" :"%"+name+"%"})
+    res = "<title>検索結果</title>"
+    for row in cur:
+        res = res + "<table border=\"1\">\n"
+        res = res + "\t<tr><td><a href=\"api?id=" + html.escape(str(row[0])) + "&"
+        res = res + "format=" + html.escape(form) + "\">" + html.escape(row[1]) + "</a></td></tr>\n"
+        res = res + "\t<tr><td><pre>" + html.escape(row[2]) + "</pre></td></tr>"
+        res = res + "</table>"
+    con.close()
+    return res
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
