@@ -1,0 +1,27 @@
+<body>
+    <h1>記録を追加する</h1><br><br>
+    <p>消費カロリーの記録を行えます。</p><br>
+    
+    <form method="POST" action="recoad">
+        <p style="text-align:center">内容<input type="text" name="work"></p>
+        <p style="text-align:center">日付<input type="date" name="date"></p>
+        <p style="text-align:center">消費カロリー<input type="number" name="calorie"></p>
+        <input type="submit" value="記録する">
+    </form>
+    <br><br><br>
+    <p>消費カロリー計算機</p><br>
+    <p>※(体重)*(メッツ)*(運動時間)(分)*</p>
+    <form oninput="op1.value = Number(a.value) * Number(b.value) * Number(c.value) * Number(d.value);">
+        体重<input type="number" name="weight" id="a" value=weight>(kg)
+        *
+        メッツ<input type="number" name="mets" id="b" value="0">
+        *
+        運動時間<input type="number" name="time" id="c" value="0">(分)
+        *
+        <input type="number" value="0.0175" id="d" readonly>
+        =
+        <output name="calorieanswer"></output>
+    </form><br><br>
+    <p>https://www.mhlw.go.jp/stf/houdou/2r9852000002xple-att/2r9852000002xpqt.pdf</p><br>
+    <p>↑メッツの値はこちらを参照ください。</p>
+</body>
