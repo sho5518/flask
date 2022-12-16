@@ -1,15 +1,22 @@
-<table>
-    <from method="GET" action="result">
+<a href="login">ログイン</a><br>
+{{msg | safe}}
+<table align="center">
+    <from method="POST" action="search">
         <tr>
-            <td>タイトル</td>
-            <td>形式</td>
-            <td></td>
+            <td>30日以内の日付で記録されたカロリーデータを取得します</td><br>
+            <td>性別を選択してください</td>
         </tr>
         <tr>
-            <td><input type="test" name="name"></td>
-            <td><label>JSON<input type="radio" name="format" value="JSON" checked></label><br>
-                <label>XML<input type="radio" name="format" value="XML"></label></td>
-            <td><input type="submit" value="検索"></td>
+            <th><label>男性<input type="radio" name="format1" value="M" checked></label></th>
+            <th><label>女性<input type="radio" name="format1" value="F"></label></th>
+        </tr>
+        <tr>
+            <td>形式を選択してください</td>
+            <td>
+                <label>JSON<input type="radio" name="format2" value="JSON" checked></label><br>
+                <label>XML<input type="radio" name="format2" value="XML"></label>
+            </td>
+            <td align="center" colspan="2"><input type="submit" value="検索"></td>
         </tr>
     </from>
 </table>
