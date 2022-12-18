@@ -1,19 +1,21 @@
 <a href="login">ログイン</a><br>
-{{msg | safe}}
 <head>
     <meta charset="utf-8">
     <title>新規登録</title>
 </head>
 
 <body>
+<p>{{msg | safe}}</p>
 <table align="center">
     <form method="POST" action="make">
-        <tr><td align="right">ユーザー名</td><td><input type="username" name="username" required></td></tr>
-        <tr><td align="right">性別</td><td><label>男<input type="radio" name="format" value="M" checked></label><br>
-            <label>女<input type="radio" name="format" value="W"></label></td></tr>
-        <tr><td align="right">年齢</td><td><input type="age" name="age" required></td></tr>
+        <tr><td align="right">ユーザー名</td><td><input type="text" name="username" required></td></tr>
+
+        <tr><td align="right">性別</td><td><label>男<input type="radio" name="format0" value="M" checked></label><br>
+                                        <label>女<input type="radio" name="format0" value="F"></label></td></tr>
+
+        <tr><td align="right">年齢</td><td><input type="number" name="age" required></td></tr>
         <tr><td align="right">パスワード</td><td><input type="password" name="password" required></td></tr>
-        <tr><td align="right">体重</td><td><input type="weight" name="weight" required></td></tr>
+        <tr><td align="right">体重</td><td><input type="number" step="0.1" name="weight" required></td></tr>
         <tr><th><td>&nbsp;</td></th></tr>
         <tr><td colspan="2" align="right"><input type="submit" value="作成"></td></tr>
     </form><br>
