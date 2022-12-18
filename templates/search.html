@@ -1,7 +1,8 @@
-<a href="login">ログイン</a><br>
+<a href="home">戻る</a><br>
 {{msg | safe}}
+<body>
 <table align="center">
-    <from method="POST" action="search">
+    <form method="POST" action="search">
         <tr>
             <td>30日以内の日付で記録されたカロリーデータを取得します</td><br>
             <td>性別を選択してください</td>
@@ -18,5 +19,6 @@
             </td>
             <td align="center" colspan="2"><input type="submit" value="検索"></td>
         </tr>
-    </from>
+    </form>
 </table>
+</body>
