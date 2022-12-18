@@ -144,14 +144,17 @@ def root_page():
         if form == "JSON":
             res = {}
             tmpa = []
+            id = 1
             for row in cur:
                 dic = {}
+                dic["id"] = id
                 dic["username"] = row[0]
                 dic["sex"] = row[1]
                 dic["work"] = row[2]
                 dic["date"] = row[3]
                 dic["calorie"] = row[4]
                 tmpa.append(dic)
+                id += 1
             res["content"] = tmpa
             con.commit()
             con.close()
@@ -161,12 +164,15 @@ def root_page():
             res = {}
             tmpa = {}
             dic = {}
+            id = 1
             for row in cur:
-                dic["username"] = row[0]
-                dic["sex"] = row[1]
-                dic["work"] = row[2]
-                dic["date"] = row[3]
-                dic["calorie"] = row[4]
+                dic["id" +str(id)] = id
+                dic["username" +str(id)] = row[0]
+                dic["sex" +str(id)] = row[1]
+                dic["work" +str(id)] = row[2]
+                dic["date" +str(id)] = row[3]
+                dic["calorie" +str(id)] = row[4]
+                id += 1
             xml = dicttoxml(dic)
             resp = make_response(xml)
             resp.mimetype = "text/xml"
